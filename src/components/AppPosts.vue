@@ -1,5 +1,6 @@
 <template>
   <div >
+      <p>Posts</p>
   </div>
 </template>
 
