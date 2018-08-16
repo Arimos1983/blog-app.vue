@@ -10,6 +10,9 @@ export default class Posts{
     {
         return axios.get('posts')
     }
+    get(id){
+        return axios.get(`posts/${id}`)
+    }
 
 }
 

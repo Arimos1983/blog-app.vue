@@ -1,11 +1,15 @@
 <template>
   <div >
       <table>
-        <ul v-for="post in posts" :key="post.id" class="list-group">
-            <li class="list-group-item">Created at : {{post.createdAt}} Post title: {{post.title}}</li><hr>
-            <h4>Blog Post</h4>
-            <li class="list-group-item list-group-item-dark">{{post.text}}</li>
-        </ul>
+        <tr>
+            <td >Title</td>
+            <td >Post</td>
+        </tr>
+        <tr v-for="post in posts" :key="post.id" class="table">
+            <td >{{post.title}}</td>
+            <td >{{post.text}}</td>
+            <router-link :to="{ name: 'posts', params:{id: post.id} }"><button>View Post</button></router-link>
+        </tr>
       </table>
   </div>
 </template>

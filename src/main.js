@@ -2,13 +2,15 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import Posts from './components/AppPosts'
+import SinglePost from './components/SinglePost'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
   {path: '/', redirect: '/posts' },
-  {path: '/posts', component: Posts}
+  {path: '/posts', component: Posts},
+  {path: '/posts/:id', component: SinglePost, name: 'posts'}
 ]
 
 const router = new VueRouter({
