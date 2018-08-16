@@ -10,8 +10,12 @@ export default class Posts{
     {
         return axios.get('posts')
     }
-    get(id){
+    getPost(id){
         return axios.get(`posts/${id}`)
+    }
+    addPost(post)
+    {
+        return axios.post('posts', post)
     }
 
 }

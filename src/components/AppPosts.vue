@@ -8,7 +8,7 @@
         <tr v-for="post in posts" :key="post.id" class="table">
             <td >{{post.title}}</td>
             <td >{{post.text}}</td>
-            <router-link :to="{ name: 'posts', params:{id: post.id} }"><button>View Post</button></router-link>
+            <router-link :to="{ name: 'add-posts', params:{id: post.id} }"><button>View Post</button></router-link>
         </tr>
       </table>
   </div>
