@@ -8,10 +8,10 @@ export default class Posts{
 
     getAll()
     {
-        return axios.get('posts')
+        return axios.get('posts?filter={"include":["comments"]}')
     }
     get(id){
-        return axios.get(`posts/${id}`)
+        return axios.get(`posts/${id}?filter={"include":["comments"]}`)
     }
     add(post)
     {
@@ -24,6 +24,10 @@ export default class Posts{
     deletePost(id)
     {
         return axios.delete(`posts/${id}`)
+    }
+    addComment(comment, postId)
+    {
+        return axios.post(`posts/${postId}/comments`, comment)
     }
 
 }

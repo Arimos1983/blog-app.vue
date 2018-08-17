@@ -8,18 +8,29 @@
             <td >{{post.text}}</td>
         </tr>
       </table>
+      <AddComment :post="post" />
+      <table class="table">
+        <tr v-for="comment in post.comments" :key="comment.id">
+            <td >{{comment.text}}</td>
+        </tr>
+      </table>
   </div>
+  
 </template>
 
 <script>
 import { posts } from '../services/Posts.js'
+import AddComment from '../components/AddComment.vue'
 
 export default {
+    components: {
+       AddComment
+    },
 
     data()
     {
         return {
-            post: []
+            post: {}
         }
     },
     created()
@@ -28,6 +39,7 @@ export default {
         .then((response) => {
         this.post = response.data
         })
+        this.$emit("postId", this.$route.params.id);
     }
   
 }

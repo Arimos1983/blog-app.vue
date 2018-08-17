@@ -4,6 +4,7 @@
           <tbody v-for="post in posts" :key="post.id" class="table">
         <tr >
             <td ><h4>{{post.title}}</h4></td>
+            <td ><h4>{{post.comments.length}}</h4></td>
         </tr>
         <tr >    
             <td >{{post.text}}</td>
@@ -46,7 +47,7 @@ export default {
       deletePost(post)
       {
           posts.deletePost(post.id)
-          .then((resposme) => {
+          .then((response) => {
           this.posts = this.posts.filter(posts => posts !== post)
         })
       }
