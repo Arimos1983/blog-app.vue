@@ -1,14 +1,12 @@
 <template>
   <div >
-      <table>
-        <tr>
-            <td >Title</td>
-            <td >Post</td>
-        </tr>
+      <table class="container">
         <tr v-for="post in posts" :key="post.id" class="table">
-            <td >{{post.title}}</td>
+            <td ><h4>{{post.title}}</h4></td>
+        </tr>
+        <tr v-for="post in posts" :key="post.id">    
             <td >{{post.text}}</td>
-            <router-link :to="{ name: 'add-posts', params:{id: post.id} }"><button>View Post</button></router-link>
+            <router-link :to="{ name: 'add-posts', params:{id: post.id} }"><button class="btn btn-primary">View Post</button></router-link>
         </tr>
       </table>
   </div>

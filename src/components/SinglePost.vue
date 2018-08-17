@@ -2,11 +2,9 @@
   <div >
       <table>
         <tr>
-            <td >Title</td>
-            <td >Post</td>
+            <td ><h4>{{post.title}}</h4></td>
         </tr>
         <tr>
-            <td >{{post.title}}</td>
             <td >{{post.text}}</td>
         </tr>
       </table>

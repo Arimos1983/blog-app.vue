@@ -1,6 +1,6 @@
 <template>
   <div >
-      <form @submit.prevent="submit">
+      <form @submit.prevent="submit" @reset="resetForm">
         <div class="form-group" >
             <label for="title">Title</label>
             <input name="title" type="text" class="form-control" id="title" minlength="2" required="required" placeholder="Title" v-model="post.title">
@@ -11,6 +11,7 @@
         </div>
         <div class="form-group">
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" name="reset" class="btn btn-primary">Reset</button>
         </div>
     </form>
   </div>
@@ -33,6 +34,12 @@ export default {
              this.$router.push('/posts')
         })
         .catch(err => console.log(err))
+        },
+        resetForm(){
+            return (this.post = {
+                title: '',
+                text: ''
+            })
         }
     }
   
