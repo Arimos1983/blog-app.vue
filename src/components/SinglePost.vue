@@ -24,7 +24,7 @@ export default {
     },
     created()
     {
-        this.$route.params.id && posts.getPost(this.$route.params.id)
+        this.$route.params.id && posts.get(this.$route.params.id)
         .then((response) => {
         this.post = response.data
         })

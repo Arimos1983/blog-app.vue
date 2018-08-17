@@ -28,12 +28,30 @@ export default {
     },
     methods:{
 
-        submit()
-        {    posts.addPost(this.post)
+        submit(){
+            if(this.post.id)
+            {
+                this.editPost()
+            }
+            else
+            {
+                this.addPost()
+            }
+        },
+        addPost()
+        {    posts.add(this.post)
             .then(response =>{
              this.$router.push('/posts')
-        })
-        .catch(err => console.log(err))
+            })
+            .catch(err => console.log(err))
+        },
+        editPost()
+        {
+            posts.edit(this.post)
+            .then(response =>{
+             this.$router.push('/posts')
+            })
+            .catch(err => console.log(err))
         },
         resetForm(){
             return (this.post = {
@@ -41,6 +59,13 @@ export default {
                 text: ''
             })
         }
+    },
+    created(){
+        
+        this.$route.params.id && posts.get(this.$route.params.id)
+       .then((response) => {
+        this.post = response.data
+        })
     }
   
   
