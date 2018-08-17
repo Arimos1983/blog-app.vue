@@ -4,10 +4,11 @@
           <tbody v-for="post in posts" :key="post.id" class="table">
         <tr >
             <td ><h4>{{post.title}}</h4></td>
-            <td ><h4>{{post.comments.length}}</h4></td>
+            <td ><h4>Number of comments: {{post.comments.length}}</h4></td>
         </tr>
         <tr >    
             <td >{{post.text}}</td>
+            <td >{{post.createdAt | formatDate()}}</td>
             <template class="btn-group">
             <router-link :to="{ name: 'add-posts', params:{id: post.id} }"><button style="width: 100px" name="view" class=" btn btn-primary">View Post</button></router-link>
             <router-link :to="{ name: 'edit-posts', params:{id: post.id} }"><button style="width: 100px" name="edit" class=" btn btn-primary">Edit Post</button></router-link>
@@ -22,8 +23,9 @@
 <script>
 
 import { posts } from '../services/Posts.js'
-
+import { mixin1 } from '../services/DateMixin.js'
 export default {
+  mixins: [mixin1],
   
   data()
   { 
