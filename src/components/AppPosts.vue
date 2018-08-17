@@ -7,8 +7,11 @@
         </tr>
         <tr >    
             <td >{{post.text}}</td>
-            <router-link :to="{ name: 'add-posts', params:{id: post.id} }"><button name="view" class="btn btn-primary">View Post</button></router-link>
-            <router-link :to="{ name: 'edit-posts', params:{id: post.id} }"><button name="edit" class="btn btn-primary">Edit Post</button></router-link>
+            <template class="btn-group">
+            <router-link :to="{ name: 'add-posts', params:{id: post.id} }"><button style="width: 100px" name="view" class=" btn btn-primary">View Post</button></router-link>
+            <router-link :to="{ name: 'edit-posts', params:{id: post.id} }"><button style="width: 100px" name="edit" class=" btn btn-primary">Edit Post</button></router-link>
+            <button @click="deletePost(post)" name="delete" style="width: 100px" class="span3 btn btn-primary" >Delete Post</button>
+            </template>
         </tr>
           </tbody>
       </table>
@@ -37,8 +40,17 @@ export default {
             vm.posts = response.data
           })
       })
-  }
-  
+  },
+  methods:{
+
+      deletePost(post)
+      {
+          posts.deletePost(post.id)
+          .then((resposme) => {
+          this.posts = this.posts.filter(posts => posts !== post)
+        })
+      }
+  }  
 }
 
 </script>
